@@ -1,6 +1,8 @@
-# לב בבית
+# לב בבית | מחברים משפחות לעזרה הנכונה
 
-לב בבית is a Hebrew, RTL-first web experience that helps family members and caretakers find suitable elder-care and assisted-living providers in Israel.
+לב בבית (Lev BaBayit) is a Hebrew, RTL-first web experience that helps family members and caretakers find suitable elder-care and assisted-living providers in Israel.
+
+Suggested public URL: `github.com/danielleykin1-bot/lev-babayit`
 
 The current repository contains the first product prototype: a responsive intake flow, a searchable provider directory, area filtering, provider contact actions, and a consent-gated submission confirmation.
 
