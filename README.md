@@ -2,7 +2,7 @@
 
 לב בבית (Lev BaBayit) is a Hebrew, RTL-first web experience that helps family members and caretakers find suitable elder-care and assisted-living providers in Israel.
 
-Built with AI-assisted development (Claude), directed and reviewed by me using QA methodology; the test strategy, documentation structure, and incident investigation are my own work.
+Initially built in GitHub Codespaces with AI-assisted development, directed and reviewed by me using QA methodology; the test strategy, documentation structure, and incident investigation are my own work.
 
 Suggested public URL: `github.com/danielleykin1-bot/lev-babayit`
 
