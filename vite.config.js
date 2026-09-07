@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: process.env.VITE_BASE_PATH || '/',
   plugins: [
     react(),
     mode === 'test' && {

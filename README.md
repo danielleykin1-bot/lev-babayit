@@ -53,6 +53,10 @@ The provider directory uses demonstration records. Phone numbers, ratings, avail
 
 The planned product, search, UX, and hosting work is documented in [ROADMAP.md](ROADMAP.md).
 
+The current free hosting setup is GitHub Pages. A successful push to `main` will deploy the static Vite site to `https://danielleykin1-bot.github.io/lev-babayit/` after GitHub Pages is enabled with **GitHub Actions** as its source. Pull requests run in an isolated GitHub Actions test environment and upload a seven-day production-shaped build artifact; they do not overwrite the production site. Cloudflare Pages, Netlify, or Vercel can be connected later if each pull request needs its own public preview URL.
+
+Keep secrets and any future API on a server-side service. Never put them in Vite client environment variables.
+
 ## Early test plan
 
 The proposed test strategy is documented in [TEST_PLAN.md](TEST_PLAN.md). It covers:
