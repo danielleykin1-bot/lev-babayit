@@ -3,17 +3,17 @@ import { ArrowLeft, Check, Clock3, HeartHandshake, MapPin, Phone, Search, Shield
 import './App.css'
 
 const providers = [
-  { name: 'מטב', type: 'שירותי סיעוד', area: 'כל הארץ', rating: '4.9', response: 'עד 24 שעות', phone: '1-700-700-114', tone: 'mint' },
-  { name: 'דנאל סיעוד', type: 'מטפלים בבית', area: 'מרכז והשרון', rating: '4.8', response: 'עד 12 שעות', phone: '1-800-400-500', tone: 'peach' },
-  { name: 'עמל ומעבר', type: 'דיור מוגן וסיעוד', area: 'כל הארץ', rating: '4.7', response: 'עד 48 שעות', phone: '1-800-800-810', tone: 'blue' },
-  { name: 'עזר מציון', type: 'סיוע רפואי בבית', area: 'גוש דן וירושלים', rating: '4.9', response: 'עד 24 שעות', phone: '*2236', tone: 'yellow' },
+  { name: 'מטב', type: 'שירותי סיעוד', area: 'כל הארץ', rating: '4.9', response: 'עד 24 שעות', phone: '1-700-700-114', tone: 'mint', source: 'רשומת הדגמה פנימית', lastVerified: null, languages: ['עברית'], hours: 'לא אומת', accessibility: 'לא אומת', contactPreference: 'טלפון' },
+  { name: 'דנאל סיעוד', type: 'מטפלים בבית', area: 'מרכז והשרון', rating: '4.8', response: 'עד 12 שעות', phone: '1-800-400-500', tone: 'peach', source: 'רשומת הדגמה פנימית', lastVerified: null, languages: ['עברית'], hours: 'לא אומת', accessibility: 'לא אומת', contactPreference: 'טלפון' },
+  { name: 'עמל ומעבר', type: 'דיור מוגן וסיעוד', area: 'כל הארץ', rating: '4.7', response: 'עד 48 שעות', phone: '1-800-800-810', tone: 'blue', source: 'רשומת הדגמה פנימית', lastVerified: null, languages: ['עברית'], hours: 'לא אומת', accessibility: 'לא אומת', contactPreference: 'טלפון' },
+  { name: 'עזר מציון', type: 'סיוע רפואי בבית', area: 'גוש דן וירושלים', rating: '4.9', response: 'עד 24 שעות', phone: '*2236', tone: 'yellow', source: 'רשומת הדגמה פנימית', lastVerified: null, languages: ['עברית'], hours: 'לא אומת', accessibility: 'לא אומת', contactPreference: 'טלפון' },
 ]
 
 function ProviderCard({ provider }) {
   const [open, setOpen] = useState(false)
   return <article className="provider-card">
     <div className={`provider-logo ${provider.tone}`}>{provider.name.slice(0, 1)}</div>
-    <div className="provider-info"><h3>{provider.name}<span className="verified"><Check size={11} /></span></h3><p>{provider.type} · {provider.area}</p><div className="provider-meta"><b>★ {provider.rating}</b><span><Clock3 size={13} /> {provider.response}</span></div>{open && <a className="provider-phone" href={`tel:${provider.phone}`}><Phone size={13} /> {provider.phone}</a>}</div>
+    <div className="provider-info"><h3>{provider.name}<span className="verified"><Check size={11} /></span></h3><p>{provider.type} · {provider.area}</p><div className="provider-meta"><b>★ {provider.rating}</b><span><Clock3 size={13} /> {provider.response}</span></div><p className="provider-status">{provider.lastVerified ? `אומת לאחרונה: ${provider.lastVerified}` : 'רשומת הדגמה - טרם אומתה'}</p>{open && <div className="provider-details"><span>שפות: {provider.languages.join(', ')}</span><span>שעות: {provider.hours}</span><span>נגישות: {provider.accessibility}</span><span>יצירת קשר: {provider.contactPreference}</span><span>מקור: {provider.source}</span><a className="provider-phone" href={`tel:${provider.phone}`}><Phone size={13} /> {provider.phone}</a></div>}</div>
     <button className="icon-button" title={`פרטים על ${provider.name}`} aria-expanded={open} onClick={() => setOpen(!open)} type="button"><ArrowLeft size={17} /></button>
   </article>
 }
