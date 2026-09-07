@@ -54,6 +54,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      actions: write
       pages: write
       id-token: write
     environment:
@@ -76,6 +77,18 @@ jobs:
         run: npm run build
         env:
           VITE_BASE_PATH: /lev-babayit/
+
+      - name: Delete old github-pages artifacts
+        shell: bash
+        run: |
+          artifacts=$(gh api "repos/${{ github.repository }}/actions/artifacts" --jq '.artifacts[] | select(.name == "github-pages") | .id')
+          if [[ -n "$artifacts" ]]; then
+            while read -r artifact_id; do
+              gh api "repos/${{ github.repository }}/actions/artifacts/${artifact_id}" --method DELETE
+            done <<< "$artifacts"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
