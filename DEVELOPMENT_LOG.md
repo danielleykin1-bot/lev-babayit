@@ -27,6 +27,11 @@ This log records the development work completed for Lev BaBayit and the current 
 - Configured the browser test to allow same-origin requests only and abort external requests.
 - Removed the external Google Fonts import from test-mode builds so the offline test bundle has no external font dependency.
 - Added documentation in [TEST_ENVIRONMENT.md](TEST_ENVIRONMENT.md) and linked it from the README.
+- Added the review-only provider discovery bot in [scripts/discover-providers.mjs](scripts/discover-providers.mjs).
+- Added Cheerio-based extraction of organization metadata, service terms, phone links, and same-origin pages.
+- Added crawl safeguards for `robots.txt`, rate limits, request timeouts, HTML-only responses, response-size limits, and explicit seed domains.
+- Restricted crawler output to `data/review/` and marked every candidate `pending_human_review` with `autoPublish: false`.
+- Documented that the crawler has no database credentials, no publish command, and cannot update the app or production provider index in [DISCOVERY_BOT.md](DISCOVERY_BOT.md).
 
 ## Validation
 
@@ -36,6 +41,10 @@ The following checks pass locally:
 - `npm run build`
 - `npm run build -- --mode test`
 - `npx playwright test --list`
+- `npm ci`
+- `npm run discover:providers -- --help`
+- Bounded crawl against `https://example.com` with review-only output assertions
+- Rejected crawler output path outside `data/review/`
 - `git diff --check`
 
 The browser test is configured but cannot execute in the current container until the system GTK library `libatk-1.0.so.0` is available. The test environment itself remains configured to run locally and block external requests.
