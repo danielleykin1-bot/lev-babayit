@@ -66,6 +66,10 @@ The proposed test strategy is documented in [TEST_PLAN.md](TEST_PLAN.md). It cov
 
 The initial release gate is: build and lint pass, critical Playwright flows pass, no high-severity accessibility findings remain, manual mobile and keyboard checks pass, and personal data is confirmed to travel only through the intended backend path.
 
+The isolated, production-shaped local test environment is documented in [TEST_ENVIRONMENT.md](TEST_ENVIRONMENT.md).
+
+The full development history and current status are documented in [DEVELOPMENT_LOG.md](DEVELOPMENT_LOG.md).
+
 ## Technology
 
 React 19, Vite, Lucide React, and Oxlint.
